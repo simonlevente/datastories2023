@@ -1,0 +1,56 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+canvas {
+  width: 100vw;
+  height: 100vh;
+}
+#main{
+  position: absolute;
+  z-index: 1;
+}
+#selects{
+  
+  position: relative;
+  z-index: 1000;
+  height: fit-content;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+#selects > * {
+  margin: 10px;
+}
+
+#info{
+  height: 200px;
+  
+  margin-top: 15px;
+  padding: 20px;
+
+  background-color: gray;
+  color: white;
+  z-index: 1000;
+  position: relative;
+
+  border-radius: 15%;
+
+  overflow: hidden;
+  overflow-wrap: break-word;
+}
+#content{
+  top: 50px;
+  right: 50px;
+  
+  width: 200px;
+  height: fit-content;
+
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+.leaflet-control-zoom {
+  display: none;
+}
