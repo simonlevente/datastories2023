@@ -132,6 +132,8 @@ let lineDotsGroup2 = [
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  let diff = round((windowHeight -200)/25);
+
   button = createImg('info.png');
   button.position(windowWidth -30, 10);
   button.mousePressed(showInfo);
@@ -140,24 +142,25 @@ function setup() {
   strokeWeight(1); // Set the stroke weight (line thickness) to 2 pixels
   
   // Initialize line positions and labels
+  
   for (let i = 0; i < 25; i++) {
-    lines.push({ y: 200 + i * 30 }); // Adjust spacing as needed
+    lines.push({ y: 200 + i * diff }); // Adjust spacing as needed
     lineLabels.push(lineNames[i])
     labelVisible.push(false);
   }
   for (let i = 0; i < 8; i++) {
     let x = windowWidth /2 - 50;
-    let y = 240 + i * 90;
+    let y = 240 + i * 3*diff;
     dots.push({ x, y });
   }
   for (let i = 0; i < 25; i++) {
-    lines2.push({ y: 200 + i * 30 }); // Adjust spacing as needed
+    lines2.push({ y: 200 + i * diff }); // Adjust spacing as needed
     lineLabels2.push(lineNames2[i])
     labelVisible2.push(false);
   }
   for (let i = 0; i < 9; i++) {
     let x = windowWidth - 50;
-    let y = 240 + i * 80;
+    let y = 240 + i * 2.5*diff;
     dots2.push({ x, y });
   }
 }
@@ -167,6 +170,7 @@ function showInfo() {
 }
 
 function draw() {
+  let diff = round((windowHeight -200)/25);
 
   background(220); // Set the background to a light gray color
 
@@ -223,7 +227,7 @@ function draw() {
       // Draw the horizontal lines
       line(50, lines[i].y, 50 + (windowWidth/2 - 300)*lineLenght[i], lines[i].y);
       // Draw the vertical lines
-      line(50 + (windowWidth/2 - 300)*lineLenght[i], lines[i].y, 50 + (windowWidth/2 - 300)*lineLenght[i], lines[i].y + 30*lineHead[i]);
+      line(50 + (windowWidth/2 - 300)*lineLenght[i], lines[i].y, 50 + (windowWidth/2 - 300)*lineLenght[i], lines[i].y + diff*lineHead[i]);
       if(lineDots[i] != null){
         strokeWeight(3)
         line(50 + (windowWidth/2 - 300)*lineLenght[i], lines[i].y, dots[lineDots[i]].x - 100, dots[lineDots[i]].y);
@@ -235,7 +239,7 @@ function draw() {
       // Draw the horizontal lines
       line(50, lines[i].y, 50 + (windowWidth/2 - 300)*lineLenght[i], lines[i].y);
       // Draw the vertical lines
-      line(50 + (windowWidth/2 - 300)*lineLenght[i], lines[i].y, 50 + (windowWidth/2 - 300)*lineLenght[i], lines[i].y + 30*lineHead[i]);
+      line(50 + (windowWidth/2 - 300)*lineLenght[i], lines[i].y, 50 + (windowWidth/2 - 300)*lineLenght[i], lines[i].y + diff*lineHead[i]);
       if(lineDots[i] != null){
         line(50 + (windowWidth/2 - 300)*lineLenght[i], lines[i].y, dots[lineDots[i]].x - 100, dots[lineDots[i]].y);
         line(dots[lineDots[i]].x - 100, dots[lineDots[i]].y, dots[lineDots[i]].x, dots[lineDots[i]].y);
@@ -258,7 +262,7 @@ function draw() {
     if (lineGroup[i] == groupID) {
       strokeWeight(3);
 
-      line(50 + (windowWidth/2 - 300)*lineLenght[i], lines[i].y, 50 + (windowWidth/2 - 300)*lineLenght[i], lines[i].y + 30*lineHead[i]);
+      line(50 + (windowWidth/2 - 300)*lineLenght[i], lines[i].y, 50 + (windowWidth/2 - 300)*lineLenght[i], lines[i].y + diff*lineHead[i]);
       line(50, lines[i].y, 50 + (windowWidth/2 - 300)*lineLenght[i], lines[i].y);
 
       if(lineDots[i] != null){
@@ -313,7 +317,7 @@ function draw() {
       // Draw the horizontal lines
       line(windowWidth/2 + 50, lines2[i].y, windowWidth/2 + 50 + (windowWidth/2 - 300)*lineLenght2[i], lines2[i].y);
       // Draw the vertical lines
-      line(windowWidth/2 + 50 + (windowWidth/2 - 300)*lineLenght2[i], lines2[i].y, windowWidth/2 + 50 + (windowWidth/2 - 300)*lineLenght2[i], lines2[i].y + 30*lineHead2[i]);
+      line(windowWidth/2 + 50 + (windowWidth/2 - 300)*lineLenght2[i], lines2[i].y, windowWidth/2 + 50 + (windowWidth/2 - 300)*lineLenght2[i], lines2[i].y + diff*lineHead2[i]);
       if(lineDots2[i] != null){
         strokeWeight(3)
         line(windowWidth/2 + 50 + (windowWidth/2 - 300)*lineLenght2[i], lines2[i].y, dots2[lineDots2[i]].x - 100, dots2[lineDots2[i]].y);
@@ -325,7 +329,7 @@ function draw() {
       // Draw the horizontal lines
       line(windowWidth/2 + 50, lines2[i].y, windowWidth/2 + 50 + (windowWidth/2 - 300)*lineLenght2[i], lines2[i].y);
       // Draw the vertical lines
-      line(windowWidth/2 + 50 + (windowWidth/2 - 300)*lineLenght2[i], lines2[i].y, windowWidth/2 + 50 + (windowWidth/2 - 300)*lineLenght2[i], lines2[i].y + 30*lineHead2[i]);
+      line(windowWidth/2 + 50 + (windowWidth/2 - 300)*lineLenght2[i], lines2[i].y, windowWidth/2 + 50 + (windowWidth/2 - 300)*lineLenght2[i], lines2[i].y + diff*lineHead2[i]);
       if(lineDots2[i] != null){
         line(windowWidth/2 + 50 + (windowWidth/2 - 300)*lineLenght2[i], lines2[i].y,  dots2[lineDots2[i]].x - 100, dots2[lineDots2[i]].y);
         line(dots2[lineDots2[i]].x - 100, dots2[lineDots2[i]].y, dots2[lineDots2[i]].x, dots2[lineDots2[i]].y);
@@ -348,7 +352,7 @@ function draw() {
     if (lineGroup2[i] == groupID2) {
       strokeWeight(3);
 
-      line(windowWidth/2 + 50 + (windowWidth/2 - 300)*lineLenght2[i], lines2[i].y, windowWidth/2 +50 + (windowWidth/2 - 300)*lineLenght2[i], lines2[i].y + 30*lineHead2[i]);
+      line(windowWidth/2 + 50 + (windowWidth/2 - 300)*lineLenght2[i], lines2[i].y, windowWidth/2 +50 + (windowWidth/2 - 300)*lineLenght2[i], lines2[i].y + diff*lineHead2[i]);
       line(windowWidth/2 + 50, lines2[i].y, 50 + windowWidth/2 + (windowWidth/2 - 300)*lineLenght2[i], lines2[i].y);
 
       if(lineDots2[i] != null){
